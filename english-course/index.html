@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ቋንቋ to Career — Beginner English by AY Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f5efe6;
+    --cream-2:#ebe2d3;
+    --ink:#1a1714;
+    --ink-soft:#3a342e;
+    --muted:#6b6259;
+    --line:#d8cdb9;
+    --accent:#b8421f;
+    --accent-deep:#8a2f15;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  /* === Nav === */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,239,230,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    font-weight:500;
+    letter-spacing:-0.02em;
+  }
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.04em;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--accent)}
+  .nav-cta{
+    background:var(--ink);
+    color:var(--cream) !important;
+    padding:10px 18px;
+    font-size:12px !important;
+    letter-spacing:0.1em !important;
+    text-transform:uppercase;
+    transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--accent)}
+
+  /* === Hero === */
+  .hero{
+    padding:80px 40px 100px;
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero-tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:20px;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--accent);
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-size:clamp(48px, 7vw, 96px);
+    font-weight:400;
+    line-height:0.95;
+    letter-spacing:-0.03em;
+    margin-bottom:24px;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero-sub{
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-bottom:32px;
+    max-width:520px;
+    line-height:1.55;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{
+    background:var(--ink);
+    color:var(--cream);
+    padding:16px 28px;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:500;
+    text-decoration:none;
+    transition:background .15s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--accent)}
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+    padding:16px 28px;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:500;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    transition:all .15s;
+    display:inline-block;
+  }
+  .btn-secondary:hover{background:var(--ink);color:var(--cream)}
+
+  /* Course Card */
+  .course-card{
+    background:#fffaf2;
+    border:1px solid var(--line);
+    padding:36px 32px;
+    position:relative;
+  }
+  .card-corner{
+    position:absolute;
+    top:-9px;
+    left:24px;
+    background:var(--cream);
+    padding:0 12px;
+    font-size:10px;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .card-badge{
+    position:absolute;
+    top:24px;
+    right:24px;
+    font-family:'Fraunces',serif;
+    font-size:11px;
+    line-height:1.1;
+    color:var(--accent);
+    letter-spacing:0.1em;
+    text-align:right;
+    font-weight:500;
+  }
+  .card-price{
+    font-family:'Fraunces',serif;
+    font-size:42px;
+    font-weight:400;
+    margin-bottom:6px;
+    margin-top:14px;
+  }
+  .card-title{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-style:italic;
+    color:var(--accent);
+    margin-bottom:28px;
+  }
+  .card-spec{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:13px;
+  }
+  .card-spec span:first-child{color:var(--muted);letter-spacing:0.05em}
+  .card-spec span:last-child{font-weight:500}
+  .card-cert{color:var(--accent) !important;font-weight:600}
+
+  /* Marquee */
+  .marquee{
+    background:var(--ink);
+    color:var(--cream);
+    overflow:hidden;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .marquee-track{
+    display:flex;
+    white-space:nowrap;
+    animation:scroll 30s linear infinite;
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-style:italic;
+    gap:60px;
+  }
+  .marquee-track span{display:flex;align-items:center;gap:60px}
+  .marquee-track::after{content:""}
+  @keyframes scroll{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  .dot{color:var(--accent);font-style:normal}
+
+  /* Section base */
+  section{padding:100px 40px;max-width:1300px;margin:0 auto}
+  .section-tag{
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:18px;
+  }
+  h2{
+    font-family:'Fraunces',serif;
+    font-size:clamp(36px, 5vw, 64px);
+    font-weight:400;
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin-bottom:60px;
+    max-width:900px;
+  }
+  h2 em{font-style:italic;color:var(--accent)}
+
+  /* Why grid */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .why-cell{
+    background:var(--cream);
+    padding:36px 32px;
+    transition:background .2s;
+  }
+  .why-cell:hover{background:#fffaf2}
+  .why-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    margin-bottom:16px;
+    letter-spacing:0.1em;
+  }
+  .why-cell h3{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    font-weight:500;
+    margin-bottom:12px;
+    line-height:1.2;
+  }
+  .why-cell p{color:var(--ink-soft);font-size:14px;line-height:1.6}
+
+  /* Curriculum */
+  .curr{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .curr-row{
+    display:grid;
+    grid-template-columns:80px 1fr 220px 50px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+    cursor:pointer;
+    transition:padding-left .2s;
+  }
+  .curr-row:hover{padding-left:14px;background:rgba(184,66,31,0.03)}
+  .curr-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.1em;
+  }
+  .curr-title{
+    font-family:'Fraunces',serif;
+    font-size:26px;
+    font-weight:400;
+  }
+  .curr-meta{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .curr-arrow{
+    text-align:right;
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    color:var(--muted);
+    transition:color .2s, transform .2s;
+  }
+  .curr-row:hover .curr-arrow{color:var(--accent);transform:translateX(6px)}
+
+  /* Instructor section */
+  .instructor{
+    background:var(--ink);
+    color:var(--cream);
+    padding:120px 40px;
+    margin:60px 0 0;
+  }
+  .instructor-inner{
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:80px;
+    align-items:center;
+  }
+  .instructor .section-tag{color:#d8a47a}
+  .instructor h2{color:var(--cream);margin-bottom:24px}
+  .instructor h2 em{color:#d8a47a}
+  .instructor p{color:#c8b8a3;font-size:16px;line-height:1.7;max-width:480px}
+  .reveal-card{
+    aspect-ratio:3/4;
+    background:linear-gradient(135deg, #2a2521 0%, #1a1714 100%);
+    border:1px solid #3a342e;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    position:relative;
+  }
+  .reveal-card::before{
+    content:"— Reveal / Soon";
+    position:absolute;
+    top:20px;
+    left:20px;
+    font-size:10px;
+    letter-spacing:0.2em;
+    color:#d8a47a;
+    text-transform:uppercase;
+  }
+  .reveal-card .silhouette{
+    font-family:'Fraunces',serif;
+    font-size:120px;
+    color:#3a342e;
+    line-height:1;
+    margin-bottom:20px;
+  }
+  .reveal-card .label{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:28px;
+    color:#d8a47a;
+    text-align:center;
+  }
+
+  /* CTA section */
+  .cta-final{
+    text-align:center;
+    padding:140px 40px;
+    border-top:1px solid var(--line);
+  }
+  .cta-final h2{
+    margin:0 auto 40px;
+    text-align:center;
+  }
+  .cta-final p{
+    color:var(--ink-soft);
+    font-size:16px;
+    margin-bottom:32px;
+    max-width:540px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--cream-2);
+    padding:60px 40px 40px;
+    border-top:1px solid var(--line);
+  }
+  .footer-inner{
+    max-width:1300px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:48px;
+    margin-bottom:40px;
+  }
+  .footer-brand h3{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-weight:500;
+    margin-bottom:10px;
+  }
+  .footer-brand h3 span{color:var(--accent)}
+  .footer-brand p{color:var(--ink-soft);font-size:14px;line-height:1.6;max-width:320px}
+  .footer-col h4{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .footer-col a{
+    display:block;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:14px;
+    margin-bottom:10px;
+    transition:color .15s;
+  }
+  .footer-col a:hover{color:var(--accent)}
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    font-size:12px;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    max-width:1300px;
+    margin:0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px){
+    nav{padding:16px 20px}
+    .nav-links{gap:18px}
+    .nav-links a:not(.nav-cta){display:none}
+    .hero{
+      grid-template-columns:1fr;
+      padding:50px 20px 70px;
+      gap:40px;
+    }
+    section{padding:60px 20px}
+    .why-grid{grid-template-columns:1fr}
+    .curr-row{
+      grid-template-columns:50px 1fr 30px;
+      grid-template-rows:auto auto;
+      gap:6px 12px;
+    }
+    .curr-meta{grid-column:1 / -1;font-size:10px}
+    .curr-title{font-size:20px}
+    .instructor{padding:80px 20px}
+    .instructor-inner{grid-template-columns:1fr;gap:40px}
+    .reveal-card{max-width:280px;margin:0 auto}
+    .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+    .footer-bottom{flex-direction:column;gap:8px;padding:24px 20px 0}
+    .cta-final{padding:80px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">AY Labs<span>.</span></div>
+  <div class="nav-links">
+    <a href="#why">Why us</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#instructor">Instructor</a>
+    <a href="/login" class="nav-cta">Enroll →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <span class="hero-tag">A New AY Labs Course · Beginner English</span>
+    <h1>From <em>ቋንቋ</em><br/>to a real career.</h1>
+    <p class="hero-sub">Master beginner English in 3 months — taught simply, taught patiently. Built for anyone in Ethiopia ready to speak, work, and grow in English.</p>
+    <div class="hero-ctas">
+      <a href="/login" class="btn-primary">Enroll for 3,999 ETB →</a>
+      <a href="#curriculum" class="btn-secondary">See curriculum</a>
+    </div>
+  </div>
+
+  <div class="course-card">
+    <span class="card-corner">— Course Card / 001</span>
+    <span class="card-badge">NEW<br/>COURSE</span>
+    <div class="card-price">3,999 ETB</div>
+    <div class="card-title">ቋንቋ to Career</div>
+    <div class="card-spec"><span>Level</span><span>Beginner</span></div>
+    <div class="card-spec"><span>Access</span><span>3 Months</span></div>
+    <div class="card-spec"><span>Format</span><span>HD Video + Practice</span></div>
+    <div class="card-spec"><span>Support Lang</span><span>English / አማርኛ</span></div>
+    <div class="card-spec"><span>Certificate</span><span class="card-cert">✓ Included</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Speak with confidence <span class="dot">✦</span> Write professionally <span class="dot">✦</span> Pass interviews <span class="dot">✦</span> Travel anywhere <span class="dot">✦</span> Speak with confidence <span class="dot">✦</span> Write professionally <span class="dot">✦</span> Pass interviews <span class="dot">✦</span> Travel anywhere <span class="dot">✦</span></span>
+    <span>Speak with confidence <span class="dot">✦</span> Write professionally <span class="dot">✦</span> Pass interviews <span class="dot">✦</span> Travel anywhere <span class="dot">✦</span> Speak with confidence <span class="dot">✦</span> Write professionally <span class="dot">✦</span> Pass interviews <span class="dot">✦</span> Travel anywhere <span class="dot">✦</span></span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-tag">Why this course</div>
+  <h2>English isn't a luxury anymore.<br/>It's the <em>fastest path</em> to a better job.</h2>
+  <div class="why-grid">
+    <div class="why-cell">
+      <div class="why-num">01</div>
+      <h3>Start from zero, no shame</h3>
+      <p>If you can't say "hello" yet, you're exactly who this course is for. We start at the very beginning, and we go slow.</p>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">02</div>
+      <h3>Learn in your language first</h3>
+      <p>Every lesson includes Amharic support so you actually understand grammar — not just memorize words you can't use.</p>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">03</div>
+      <h3>Watch on your phone</h3>
+      <p>HD lessons. Watch during transport, on break, late at night. 3-month access — repeat any lesson, any time.</p>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">04</div>
+      <h3>Speak from day one</h3>
+      <p>Real conversations, not textbook drills. By module 3 you're holding a basic conversation. By the end — job-interview ready.</p>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">05</div>
+      <h3>Built for Ethiopians</h3>
+      <p>Examples come from Addis life — markets, taxis, offices, hotel work, hospitality, calls with family abroad.</p>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">06</div>
+      <h3>Certificate of completion</h3>
+      <p>Finish all 6 modules and earn an AY Labs certificate — real proof to attach to your job applications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum">
+  <div class="section-tag">The curriculum</div>
+  <h2>Six modules.<br/><em>Zero to confident.</em></h2>
+  <div class="curr">
+    <div class="curr-row">
+      <div class="curr-num">M / 01</div>
+      <div class="curr-title">The Alphabet & First Words</div>
+      <div class="curr-meta">5 LESSONS · 1 WEEK</div>
+      <div class="curr-arrow">→</div>
+    </div>
+    <div class="curr-row">
+      <div class="curr-num">M / 02</div>
+      <div class="curr-title">Everyday Greetings & Introductions</div>
+      <div class="curr-meta">6 LESSONS · 2 WEEKS</div>
+      <div class="curr-arrow">→</div>
+    </div>
+    <div class="curr-row">
+      <div class="curr-num">M / 03</div>
+      <div class="curr-title">Simple Sentences & Conversation</div>
+      <div class="curr-meta">7 LESSONS · 3 WEEKS</div>
+      <div class="curr-arrow">→</div>
+    </div>
+    <div class="curr-row">
+      <div class="curr-num">M / 04</div>
+      <div class="curr-title">Reading, Writing & Grammar Basics</div>
+      <div class="curr-meta">8 LESSONS · 3 WEEKS</div>
+      <div class="curr-arrow">→</div>
+    </div>
+    <div class="curr-row">
+      <div class="curr-num">M / 05</div>
+      <div class="curr-title">English for Work & Interviews</div>
+      <div class="curr-meta">6 LESSONS · 2 WEEKS</div>
+      <div class="curr-arrow">→</div>
+    </div>
+    <div class="curr-row">
+      <div class="curr-num">M / 06</div>
+      <div class="curr-title">Real World Practice & Certificate</div>
+      <div class="curr-meta">4 LESSONS · 1 WEEK</div>
+      <div class="curr-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor" id="instructor">
+  <div class="instructor-inner">
+    <div class="reveal-card">
+      <div class="silhouette">?</div>
+      <div class="label">Coming<br/><em>soon.</em></div>
+    </div>
+    <div>
+      <div class="section-tag">Your teacher</div>
+      <h2>A teacher,<br/>not a <em>textbook.</em></h2>
+      <p>We're partnering with a specialist English instructor with years of classroom experience in Addis Ababa. Someone patient. Someone real. Someone who teaches like a friend.</p>
+      <p style="margin-top:18px">Final instructor reveal coming in our next announcement. Enroll now — you'll be the first to meet them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final">
+  <h2>Your <em>career</em><br/>starts with a word.</h2>
+  <p>3 months. 36 lessons. One language that opens every door in Ethiopia and beyond.</p>
+  <a href="/login" class="btn-primary">Enroll now — 3,999 ETB →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>AY Labs<span>.</span></h3>
+      <p>Ethiopia's homegrown e-learning platform. Language, pastry, code, and more — taught simply, taught seriously.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <a href="#">ቋንቋ to Career — English</a>
+      <a href="#">ቤት to Birr — Pastry</a>
+      <a href="#">More coming soon</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="/login">Enroll</a>
+      <a href="/login">Student Login</a>
+      <a href="#">Help & Support</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">Telegram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 AYafri Labs PLC · Addis Ababa</div>
+    <div>Built with care in Ethiopia</div>
+  </div>
+</footer>
+
+</body>
+</html>

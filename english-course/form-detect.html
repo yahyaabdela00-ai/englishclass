@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Form detection</title></head>
+<body>
+<!-- This file exists so Netlify's HTML parser detects the form at build time.
+     Users never see this page. -->
+<form name="english-registrations" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+  <input type="text" name="full_name" />
+  <input type="tel" name="phone" />
+  <input type="email" name="email" />
+  <input type="file" name="payment_screenshot" />
+  <input type="text" name="bot-field" />
+</form>
+</body>
+</html>

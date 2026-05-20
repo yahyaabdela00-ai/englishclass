@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Portal — ቋንቋ to Career · AY Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f5efe6;
+    --cream-2:#ebe2d3;
+    --ink:#1a1714;
+    --ink-soft:#3a342e;
+    --muted:#6b6259;
+    --line:#d8cdb9;
+    --accent:#b8421f;
+    --accent-deep:#8a2f15;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  header{
+    padding:24px 40px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    font-weight:500;
+    letter-spacing:-0.02em;
+  }
+  .logo span{color:var(--accent)}
+  .back{
+    font-size:13px;
+    color:var(--muted);
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .back:hover{color:var(--ink)}
+  main{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+  }
+  .card{
+    width:100%;
+    max-width:440px;
+    background:#fffaf2;
+    border:1px solid var(--line);
+    padding:48px 40px;
+    position:relative;
+  }
+  .card::before{
+    content:"— Student Portal / 001";
+    position:absolute;
+    top:-9px;
+    left:24px;
+    background:var(--cream);
+    padding:0 12px;
+    font-size:10px;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .tag{
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-size:36px;
+    font-weight:400;
+    line-height:1.1;
+    letter-spacing:-0.02em;
+    margin-bottom:8px;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .sub{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:32px;
+    line-height:1.5;
+  }
+  .tabs{
+    display:flex;
+    border-bottom:1px solid var(--line);
+    margin-bottom:28px;
+  }
+  .tab{
+    flex:1;
+    padding:12px 0;
+    background:none;
+    border:none;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+    transition:all .2s;
+  }
+  .tab.active{color:var(--ink);border-bottom-color:var(--accent)}
+  .panel{display:none}
+  .panel.active{display:block}
+  .field{margin-bottom:18px}
+  label{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  input[type=password],
+  input[type=file],
+  select{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    background:#fff;
+    font-family:inherit;
+    font-size:15px;
+    color:var(--ink);
+    border-radius:0;
+    outline:none;
+    transition:border-color .15s;
+  }
+  input:focus,select:focus{border-color:var(--accent)}
+  input[type=file]{padding:10px;font-size:13px;color:var(--muted)}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
+  .btn{
+    width:100%;
+    padding:14px;
+    background:var(--ink);
+    color:var(--cream);
+    border:none;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:8px;
+    transition:background .15s;
+  }
+  .btn:hover{background:var(--accent)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .msg{
+    padding:12px 14px;
+    font-size:13px;
+    margin-bottom:18px;
+    border-left:3px solid;
+    display:none;
+  }
+  .msg.success{display:block;background:#eef5ee;border-color:#3a7a3a;color:#2a5a2a}
+  .msg.error{display:block;background:#fbeeea;border-color:var(--accent);color:var(--accent-deep)}
+  .price{
+    background:var(--cream-2);
+    padding:16px;
+    margin-bottom:24px;
+    border-left:3px solid var(--accent);
+  }
+  .price-amt{font-family:'Fraunces',serif;font-size:24px;color:var(--ink)}
+  .price-detail{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.05em;text-transform:uppercase}
+  .pay-info{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .pay-info b{color:var(--ink)}
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:12px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:480px){
+    header{padding:18px 20px}
+    .card{padding:36px 24px}
+    h1{font-size:28px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">AY Labs<span>.</span></div>
+  <a class="back" href="/">← Home</a>
+</header>
+
+<main>
+  <div class="card">
+    <div class="tag">A New AY Labs Course</div>
+    <h1>ቋንቋ to <em>Career.</em></h1>
+    <p class="sub">Join Ethiopia's beginner English course. Register below, or sign in if you've already enrolled.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="register">Register</button>
+      <button class="tab" data-tab="login">Sign In</button>
+    </div>
+
+    <!-- REGISTER PANEL -->
+    <div class="panel active" id="panel-register">
+      <div class="price">
+        <div class="price-amt">3,999 ETB</div>
+        <div class="price-detail">3 months access · 36 lessons · Certificate</div>
+        <div class="pay-info">
+          Pay via <b>Telebirr</b> or <b>CBE Birr</b> to <b>Yasmin Mustefa</b> · Screenshot the receipt and upload it below.
+        </div>
+      </div>
+
+      <div class="msg" id="reg-msg"></div>
+
+      <!-- Netlify form -->
+      <form
+        name="english-registrations"
+        method="POST"
+        action="/login?success=1"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        enctype="multipart/form-data"
+        id="reg-form"
+      >
+        <input type="hidden" name="form-name" value="english-registrations" />
+        <p style="display:none"><label>Don't fill: <input name="bot-field" /></label></p>
+
+        <div class="field">
+          <label for="r-name">Full Name</label>
+          <input type="text" id="r-name" name="full_name" required placeholder="Yahya Mohammed" />
+        </div>
+
+        <div class="field">
+          <label for="r-phone">Phone Number</label>
+          <input type="tel" id="r-phone" name="phone" required placeholder="+251 9 ..." />
+        </div>
+
+        <div class="field">
+          <label for="r-email">Email Address</label>
+          <input type="email" id="r-email" name="email" required placeholder="you@email.com" />
+        </div>
+
+        <div class="field">
+          <label for="r-payment">Payment Screenshot</label>
+          <input type="file" id="r-payment" name="payment_screenshot" accept="image/*,application/pdf" required />
+          <div class="hint">Upload the Telebirr or CBE Birr transaction screenshot (image or PDF).</div>
+        </div>
+
+        <button type="submit" class="btn" id="reg-submit">Submit Registration →</button>
+      </form>
+    </div>
+
+    <!-- LOGIN PANEL -->
+    <div class="panel" id="panel-login">
+      <div class="msg" id="login-msg"></div>
+      <form id="login-form">
+        <div class="field">
+          <label for="l-email">Email</label>
+          <input type="email" id="l-email" required placeholder="you@email.com" />
+        </div>
+        <div class="field">
+          <label for="l-phone">Phone (used at registration)</label>
+          <input type="tel" id="l-phone" required placeholder="+251 9 ..." />
+        </div>
+        <button type="submit" class="btn">Sign In →</button>
+        <div class="hint" style="margin-top:14px;text-align:center">
+          Your account is created once your payment is verified by AY Labs (usually within 24 hours).
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 AYafri Labs PLC · Addis Ababa · Built with care in Ethiopia
+</footer>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+  }));
+
+  // Registration: let browser submit natively (most reliable for file uploads on Netlify).
+  // Netlify redirects to /login?success=1 after successful submission.
+  const regMsg = document.getElementById('reg-msg');
+  if (new URLSearchParams(window.location.search).get('success') === '1') {
+    regMsg.className = 'msg success';
+    regMsg.textContent = '\u2713 Registration received. We\'ll verify your payment and email you within 24 hours.';
+    setTimeout(() => { window.history.replaceState({}, '', '/login'); }, 100);
+  }
+
+  // Login (placeholder — wire to your real auth later)
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = document.getElementById('login-msg');
+    msg.className = 'msg error';
+    msg.textContent = 'Student dashboard launches once payment is verified. You\'ll receive an email with login access.';
+  });
+</script>
+
+</body>
+</html>
